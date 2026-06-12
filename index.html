@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subash Pariyar — Graphic Designer & Creative Technologist</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0A0F1E;
+    --navy2:   #111827;
+    --navy3:   #1C2840;
+    --teal:    #00C9B1;
+    --amber:   #F5A623;
+    --offwhite:#F0EEE8;
+    --muted:   #8892A4;
+    --card:    #141D30;
+    --border:  rgba(255,255,255,0.07);
+    --font-disp: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--offwhite);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(10,15,30,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem;
+    letter-spacing: -0.02em; color: var(--offwhite);
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; color: var(--muted);
+    text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    font-size: 0.82rem; font-weight: 600; color: var(--navy);
+    background: var(--teal); padding: 8px 20px; border-radius: 6px;
+    text-decoration: none; letter-spacing: 0.03em; transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0 0;
+    max-width: 1100px; width: 100%;
+    align-items: center;
+  }
+  .hero-divider {
+    width: 1px; height: 280px;
+    background: linear-gradient(to bottom, transparent, var(--teal), transparent);
+    justify-self: center;
+  }
+  .hero-left { padding-right: 64px; }
+  .hero-right { padding-left: 64px; }
+
+  .hero-eyebrow {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+  }
+  .hero-name {
+    font-family: var(--font-disp); font-weight: 700;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.0; letter-spacing: -0.03em; color: var(--offwhite);
+    margin-bottom: 20px;
+  }
+  .hero-name .accent { color: var(--teal); }
+  .hero-role-left {
+    font-size: 1.05rem; font-weight: 500; color: var(--offwhite);
+    margin-bottom: 10px;
+  }
+  .hero-desc {
+    font-size: 0.92rem; color: var(--muted); line-height: 1.75;
+    margin-bottom: 28px;
+  }
+  .hero-role-right {
+    font-size: 1.05rem; font-weight: 500; color: var(--offwhite);
+    margin-bottom: 10px;
+  }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em;
+    padding: 5px 14px; border-radius: 20px;
+    border: 1px solid var(--border); color: var(--muted);
+    background: var(--card);
+  }
+  .pill.teal { border-color: var(--teal); color: var(--teal); background: rgba(0,201,177,0.08); }
+  .pill.amber { border-color: var(--amber); color: var(--amber); background: rgba(245,166,35,0.08); }
+
+  .hero-actions { display: flex; gap: 16px; margin-top: 28px; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: var(--font-disp); font-size: 0.88rem; font-weight: 600;
+    color: var(--navy); background: var(--teal);
+    padding: 12px 28px; border-radius: 8px; text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost {
+    font-family: var(--font-disp); font-size: 0.88rem; font-weight: 500;
+    color: var(--offwhite); background: transparent;
+    padding: 12px 28px; border-radius: 8px; text-decoration: none;
+    border: 1px solid var(--border); transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* background grid decoration */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,201,177,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,201,177,0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+  }
+  .glow {
+    position: absolute; width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,201,177,0.07) 0%, transparent 70%);
+    pointer-events: none; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  }
+
+  /* ── SECTION WRAPPER ── */
+  section { padding: 100px 48px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--font-disp); font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700; letter-spacing: -0.03em; color: var(--offwhite);
+    margin-bottom: 14px; line-height: 1.1;
+  }
+  .section-sub {
+    font-size: 0.95rem; color: var(--muted); max-width: 560px; line-height: 1.75;
+    margin-bottom: 64px;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about { background: var(--navy2); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+  }
+  .about-block {
+    background: var(--card); padding: 40px 36px;
+    transition: background 0.2s;
+  }
+  .about-block:hover { background: var(--navy3); }
+  .about-num {
+    font-family: var(--font-disp); font-size: 3rem; font-weight: 700;
+    color: var(--teal); letter-spacing: -0.04em; line-height: 1;
+    margin-bottom: 8px;
+  }
+  .about-num .small { font-size: 1.4rem; }
+  .about-label {
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+  }
+  .about-text { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+  /* ── PROJECTS ── */
+  .projects { background: var(--navy); }
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  }
+  .project-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { transform: translateY(-4px); border-color: rgba(0,201,177,0.3); }
+  .project-card.featured {
+    grid-column: span 2;
+    flex-direction: row;
+  }
+  .project-visual {
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem; position: relative; overflow: hidden;
+  }
+  .project-card:not(.featured) .project-visual {
+    height: 200px;
+  }
+  .project-card.featured .project-visual {
+    width: 380px; min-height: 280px;
+  }
+
+  /* Unique visual backgrounds per project */
+  .vis-pkg {
+    background: linear-gradient(135deg, #0d2137 0%, #1a3a52 50%, #0d2137 100%);
+  }
+  .vis-pkg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(0,201,177,0.2) 0%, transparent 60%),
+      repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(0,201,177,0.05) 18px, rgba(0,201,177,0.05) 19px);
+  }
+  .vis-deck {
+    background: linear-gradient(135deg, #1a1428 0%, #2d1f47 100%);
+  }
+  .vis-deck::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(245,166,35,0.25) 0%, transparent 60%);
+  }
+  .vis-trade {
+    background: linear-gradient(135deg, #0f1f1a 0%, #133028 100%);
+  }
+  .vis-trade::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(0,201,177,0.3) 0%, transparent 55%),
+      repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(0,201,177,0.04) 30px, rgba(0,201,177,0.04) 31px);
+  }
+  .vis-plan {
+    background: linear-gradient(135deg, #121a2e 0%, #1e2d4a 100%);
+  }
+  .vis-plan::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(0,201,177,0.07) 28px, rgba(0,201,177,0.07) 29px),
+      repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(0,201,177,0.07) 28px, rgba(0,201,177,0.07) 29px);
+  }
+  .vis-email {
+    background: linear-gradient(135deg, #1a1228 0%, #2a1f40 100%);
+  }
+  .vis-email::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(245,166,35,0.2) 0%, transparent 55%),
+                radial-gradient(ellipse at 70% 30%, rgba(0,201,177,0.15) 0%, transparent 50%);
+  }
+
+  .proj-icon {
+    position: relative; z-index: 1; font-size: 3rem;
+    filter: drop-shadow(0 0 20px rgba(0,201,177,0.4));
+  }
+  .project-body { padding: 32px; flex: 1; display: flex; flex-direction: column; }
+  .project-tag {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+  }
+  .project-title {
+    font-family: var(--font-disp); font-size: 1.25rem; font-weight: 700;
+    color: var(--offwhite); margin-bottom: 10px; line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .project-desc {
+    font-size: 0.88rem; color: var(--muted); line-height: 1.75;
+    margin-bottom: 20px; flex: 1;
+  }
+  .project-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tool-tag {
+    font-size: 0.7rem; font-weight: 500;
+    padding: 3px 10px; border-radius: 4px;
+    background: rgba(255,255,255,0.05); color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  /* ── SKILLS ── */
+  .skills { background: var(--navy2); }
+  .skills-layout {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  }
+  .skill-group-title {
+    font-family: var(--font-disp); font-size: 1rem; font-weight: 700;
+    color: var(--offwhite); margin-bottom: 24px; letter-spacing: -0.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .skill-group-title .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .dot-teal { background: var(--teal); }
+  .dot-amber { background: var(--amber); }
+  .skill-item { margin-bottom: 18px; }
+  .skill-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 7px;
+  }
+  .skill-name { font-size: 0.85rem; font-weight: 500; color: var(--offwhite); }
+  .skill-level { font-size: 0.75rem; color: var(--muted); }
+  .skill-bar {
+    height: 4px; background: var(--border); border-radius: 2px; overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%; border-radius: 2px;
+    background: linear-gradient(90deg, var(--teal), rgba(0,201,177,0.5));
+    transition: width 1s ease;
+  }
+  .skill-fill.amber {
+    background: linear-gradient(90deg, var(--amber), rgba(245,166,35,0.5));
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--navy); }
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 0 48px; padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-meta { padding-top: 4px; }
+  .exp-dates {
+    font-size: 0.78rem; font-weight: 500; color: var(--teal);
+    letter-spacing: 0.04em; margin-bottom: 6px;
+  }
+  .exp-company {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.5;
+  }
+  .exp-title {
+    font-family: var(--font-disp); font-size: 1.15rem; font-weight: 700;
+    color: var(--offwhite); margin-bottom: 10px; letter-spacing: -0.02em;
+  }
+  .exp-desc {
+    font-size: 0.88rem; color: var(--muted); line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .exp-tag {
+    font-size: 0.7rem; font-weight: 500; padding: 3px 10px;
+    border-radius: 4px; background: rgba(0,201,177,0.08);
+    color: var(--teal); border: 1px solid rgba(0,201,177,0.2);
+  }
+  .exp-tag.amber-tag {
+    background: rgba(245,166,35,0.08);
+    color: var(--amber); border-color: rgba(245,166,35,0.2);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--navy2);
+    text-align: center;
+  }
+  .contact .section-sub { margin: 0 auto 48px; }
+  .contact-cards {
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+  }
+  .contact-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px 36px;
+    display: flex; align-items: center; gap: 16px;
+    text-decoration: none; transition: border-color 0.2s, transform 0.2s;
+  }
+  .contact-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+  .contact-icon { font-size: 1.6rem; }
+  .contact-label {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+  }
+  .contact-value {
+    font-family: var(--font-disp); font-size: 0.95rem; font-weight: 600;
+    color: var(--offwhite);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); padding: 28px 48px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-left {
+    font-size: 0.82rem; color: var(--muted);
+    font-family: var(--font-disp);
+  }
+  .footer-left strong { color: var(--teal); }
+  .footer-right { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.7s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-divider { display: none; }
+    .hero-left { padding-right: 0; margin-bottom: 40px; }
+    .hero-right { padding-left: 0; }
+    .about-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { flex-direction: column; grid-column: span 1; }
+    .project-card.featured .project-visual { width: 100%; min-height: 180px; }
+    .skills-layout { grid-template-columns: 1fr; gap: 40px; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    .contact-cards { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up { animation: none; }
+    .project-card { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">S<span>.</span>Pariyar</div>
+  <ul class="nav-links">
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:pariyarsubash2055@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="glow"></div>
+  <div class="hero-grid">
+
+    <!-- LEFT: Designer identity -->
+    <div class="hero-left fade-up delay-1">
+      <p class="hero-eyebrow">Available for Full-Time · Toronto, ON</p>
+      <h1 class="hero-name">Subash<br><span class="accent">Pariyar</span></h1>
+      <p class="hero-role-left">Graphic Designer</p>
+      <p class="hero-desc">
+        Retail packaging, sales decks, trade show graphics, planograms, and digital collateral — built with precision and on-brand intent.
+      </p>
+      <div class="pill-row">
+        <span class="pill teal">Adobe Illustrator</span>
+        <span class="pill teal">Photoshop</span>
+        <span class="pill teal">Packaging</span>
+        <span class="pill teal">Print Production</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-divider"></div>
+
+    <!-- RIGHT: Tech identity -->
+    <div class="hero-right fade-up delay-3">
+      <p class="hero-role-right">Software Developer &amp; IT Specialist</p>
+      <p class="hero-desc">
+        Computer Engineering graduate with 3+ years in software development, IT support, and hardware — bringing technical depth to every design decision.
+      </p>
+      <div class="pill-row">
+        <span class="pill amber">JavaScript / React</span>
+        <span class="pill amber">Node.js</span>
+        <span class="pill amber">IT Support</span>
+        <span class="pill amber">CompTIA A+</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-block">
+        <div class="about-num">3<span class="small">+</span></div>
+        <div class="about-label">Years Experience</div>
+        <div class="about-text">Spanning graphic design, software development, and IT support across Canada and Nepal.</div>
+      </div>
+      <div class="about-block">
+        <div class="about-num">40<span class="small">+</span></div>
+        <div class="about-label">Projects Delivered</div>
+        <div class="about-text">Packaging, digital campaigns, trade show graphics, sales decks, and web applications.</div>
+      </div>
+      <div class="about-block">
+        <div class="about-num">2<span class="small">in1</span></div>
+        <div class="about-label">Design + Tech</div>
+        <div class="about-text">A rare combination: creative eye backed by a Computer Engineering degree and CompTIA A+ certification.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <p class="section-label">Selected Work</p>
+    <h2 class="section-title">Design Projects</h2>
+    <p class="section-sub">A cross-section of graphic design work spanning print, retail, digital, and large-format categories.</p>
+
+    <div class="projects-grid">
+
+      <!-- Featured: Retail Packaging -->
+      <div class="project-card featured">
+        <div class="project-visual vis-pkg">
+          <span class="proj-icon">📦</span>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Retail Packaging · Featured</p>
+          <h3 class="project-title">CPG Product Line — Full Packaging Redesign</h3>
+          <p class="project-desc">
+            Redesigned packaging for a multi-SKU consumer product range requiring a cohesive premium aesthetic across different categories. Managed the project from initial concept through press-ready art — including dieline construction, modular colour coding, and vendor coordination across multiple print runs. Applied technical understanding of CMYK colour modes, bleed tolerances, and Health Canada compliance labelling requirements to ensure accurate, shelf-ready output.
+          </p>
+          <div class="project-tools">
+            <span class="tool-tag">Adobe Illustrator</span>
+            <span class="tool-tag">Photoshop</span>
+            <span class="tool-tag">Acrobat</span>
+            <span class="tool-tag">Dieline Construction</span>
+            <span class="tool-tag">Pre-press</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sales Deck -->
+      <div class="project-card">
+        <div class="project-visual vis-deck">
+          <span class="proj-icon">📊</span>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Sales Presentation</p>
+          <h3 class="project-title">New-Product Retail Sell-In Deck</h3>
+          <p class="project-desc">
+            Created a multi-slide sales deck targeting national retail buyers. Built a custom master template with infographic data visualizations and an animated version for live presentations plus a static PDF for email distribution.
+          </p>
+          <div class="project-tools">
+            <span class="tool-tag">Adobe InDesign</span>
+            <span class="tool-tag">Illustrator</span>
+            <span class="tool-tag">PowerPoint</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trade Show -->
+      <div class="project-card">
+        <div class="project-visual vis-trade">
+          <span class="proj-icon">🏛️</span>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Trade Show Graphics</p>
+          <h3 class="project-title">Large-Format Booth — Brand Experience</h3>
+          <p class="project-desc">
+            Designed 14 print assets for a large trade show booth including backwall, side panels, hanging signage, and tabletop displays. Delivered files at 100% size to multiple vendors with different spec requirements.
+          </p>
+          <div class="project-tools">
+            <span class="tool-tag">Adobe Illustrator</span>
+            <span class="tool-tag">Photoshop</span>
+            <span class="tool-tag">Large-Format Print</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Planogram -->
+      <div class="project-card">
+        <div class="project-visual vis-plan">
+          <span class="proj-icon">🗂️</span>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Planogram · Retail Display</p>
+          <h3 class="project-title">Pharmacy Shelf Optimization</h3>
+          <p class="project-desc">
+            Produced to-scale planogram diagrams and colour-coded execution briefs for a retail shelf section across multiple store locations, collaborating with merchandising and sales teams.
+          </p>
+          <div class="project-tools">
+            <span class="tool-tag">Adobe Illustrator</span>
+            <span class="tool-tag">Excel</span>
+            <span class="tool-tag">Retail Layouts</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Digital / Email -->
+      <div class="project-card">
+        <div class="project-visual vis-email">
+          <span class="proj-icon">✉️</span>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Email &amp; Digital Collateral</p>
+          <h3 class="project-title">Multi-Campaign Digital Asset Suite</h3>
+          <p class="project-desc">
+            Produced 40+ email flyers, promotional banners, and IAB-standard display ad sets across seasonal and product launch campaigns. Built modular template systems and optimized assets for fast load performance.
+          </p>
+          <div class="project-tools">
+            <span class="tool-tag">Photoshop</span>
+            <span class="tool-tag">Illustrator</span>
+            <span class="tool-tag">Figma</span>
+            <span class="tool-tag">HTML/CSS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-inner">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title">Skills &amp; Tools</h2>
+    <p class="section-sub">Design expertise backed by real technical depth — a combination that sets this work apart.</p>
+
+    <div class="skills-layout">
+      <!-- Design Skills -->
+      <div>
+        <div class="skill-group-title">
+          <span class="dot dot-teal"></span> Design &amp; Creative
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">Adobe Illustrator</span><span class="skill-level">Expert</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">Adobe Photoshop</span><span class="skill-level">Expert</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">Retail Packaging &amp; Dielines</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:87%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">Trade Show &amp; Large-Format</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">Adobe InDesign</span><span class="skill-level">Proficient</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">Figma</span><span class="skill-level">Proficient</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+        </div>
+      </div>
+
+      <!-- Tech Skills -->
+      <div>
+        <div class="skill-group-title">
+          <span class="dot dot-amber"></span> Technical &amp; Development
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">JavaScript / React.js / Node.js</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill amber" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">HTML &amp; CSS</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill amber" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">IT Support &amp; Help Desk</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill amber" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">Hardware Diagnostics &amp; Repair</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill amber" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">Windows / System Configuration</span><span class="skill-level">Expert</span></div>
+          <div class="skill-bar"><div class="skill-fill amber" style="width:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-meta"><span class="skill-name">Networking (TCP/IP, DNS, DHCP)</span><span class="skill-level">Proficient</span></div>
+          <div class="skill-bar"><div class="skill-fill amber" style="width:78%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-inner">
+    <p class="section-label">Career</p>
+    <h2 class="section-title">Experience</h2>
+    <p class="section-sub">Roles spanning design, software development, IT support, and customer-facing operations.</p>
+
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-dates">2025 — Present</div>
+          <div class="exp-company">BrandCore Studio<br>Toronto, ON</div>
+        </div>
+        <div>
+          <div class="exp-title">Graphic Designer</div>
+          <p class="exp-desc">Lead design across retail packaging, sales presentations, trade show graphics, planograms, and digital marketing campaigns. Manage projects from creative brief to press-ready and digital-ready deliverables.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Packaging</span>
+            <span class="exp-tag">Sales Decks</span>
+            <span class="exp-tag">Trade Show</span>
+            <span class="exp-tag">Planograms</span>
+            <span class="exp-tag">Digital Collateral</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-dates">Jan – Aug 2024</div>
+          <div class="exp-company">Private Labs<br>Toronto, ON</div>
+        </div>
+        <div>
+          <div class="exp-title">Software Developer (Co-op)</div>
+          <p class="exp-desc">Developed and maintained internal web applications using JavaScript, React.js, and Node.js. Participated in debugging, feature implementation, system testing, and technical documentation.</p>
+          <div class="exp-tags">
+            <span class="exp-tag amber-tag">JavaScript</span>
+            <span class="exp-tag amber-tag">React.js</span>
+            <span class="exp-tag amber-tag">Node.js</span>
+            <span class="exp-tag amber-tag">QA Testing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-dates">Sept 2023 — Present</div>
+          <div class="exp-company">Allan's Pastry Shop<br>Toronto, ON</div>
+        </div>
+        <div>
+          <div class="exp-title">Customer Service Representative</div>
+          <p class="exp-desc">Supported daily operations including POS system troubleshooting, data entry, transaction processing, and daily reporting while delivering excellent customer service.</p>
+          <div class="exp-tags">
+            <span class="exp-tag amber-tag">POS Systems</span>
+            <span class="exp-tag amber-tag">Data Entry</span>
+            <span class="exp-tag amber-tag">Tech Support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-dates">Aug 2020 — Sept 2022</div>
+          <div class="exp-company">Encoder Inc Pvt. Ltd.<br>Pokhara, Nepal</div>
+        </div>
+        <div>
+          <div class="exp-title">IT Support &amp; Software Engineer</div>
+          <p class="exp-desc">Provided IT technical support for 100+ users. Installed and configured Windows OS, diagnosed hardware (RAM, storage, motherboards), maintained network devices, and documented technical processes.</p>
+          <div class="exp-tags">
+            <span class="exp-tag amber-tag">IT Support</span>
+            <span class="exp-tag amber-tag">Hardware Repair</span>
+            <span class="exp-tag amber-tag">Networking</span>
+            <span class="exp-tag amber-tag">Windows Config</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Let's Work Together</h2>
+    <p class="section-sub">Available for full-time graphic design roles in Toronto. Reach out directly — I'd love to connect.</p>
+
+    <div class="contact-cards">
+      <a href="mailto:pariyarsubash2055@gmail.com" class="contact-card">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">pariyarsubash2055@gmail.com</div>
+        </div>
+      </a>
+      <a href="tel:+14376692055" class="contact-card">
+        <span class="contact-icon">📱</span>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">+1 (437) 669-2055</div>
+        </div>
+      </a>
+      <div class="contact-card">
+        <span class="contact-icon">📍</span>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Toronto, Ontario</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">Subash Pariyar — <strong>Graphic Designer</strong> &amp; Creative Technologist</div>
+  <div class="footer-right">Toronto, ON · Available for full-time roles · 2026</div>
+</footer>
+
+</body>
+</html>
